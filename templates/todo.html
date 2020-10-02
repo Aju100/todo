@@ -1,51 +1,31 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Todo</title>
-	
-	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-	<link rel="stylesheet" href="{% static 'css/style.css' %}">
-	<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
-</head>
-<body>
-	<div class="container">
-<h1>Todo App -<small>Programmed by Aju</small> </h1>
-<!--
+{% block content %}
+
 <ul>
-	<li>Homework of Math Subject</li>
-	<li>Dating with my girl friend</li>
-</ul>
--->
-<ul>
-	{% for todo_item in all_items %}
-	<li>
-	<blockquote>
-		<p>{{todo_item.content}}</p></blockquote>
-<div class="form-group">
-	<form class="visible-inline" action="{% url 'delete-todo' todo_item.id %}" style="display: inline-block;" method="get">{% csrf_token%}
+    {% for todo_item in all_items %}
+    <li>
+        <blockquote>
+            <p id="{{todo_item.id}}">{{todo_item.content}}</p>
+        </blockquote>
+        <div class="form-group">
+            <form class="visible-inline" action="{% url 'delete-todo' todo_item.id %}" style="display: inline-block;"
+                method="get">{% csrf_token%}
 
-	<input type="submit" value="Delete" class="btn btn-danger">
-	<a href="{% url 'update-todo' todo_item.id %}"  class="btn btn-danger" target="_blank" rel="noopener noreferrer">Update</a>
-	
+                <input type="submit" value="Delete" class="btn btn-danger">
 
-</div>
+                <a href="{% url 'update-todo' todo_item.id %}" class="btn btn-danger" target="_blank"
+                    rel="noopener noreferrer">Update</a>
 
-
-
-</form>
-	{% endfor %}
+        </div>
+        </form>
+        <input type="button" class="btn btn-info" onclick="speak({{todo_item.id}})" value="readOut">
+        {% endfor %}
 </ul>
 <div class="form-group">
-<form action="{% url 'add-todo' %}" method="post">{% csrf_token%}
-	<input type="text" name="content">
-	<input type="submit" value="Add" class="btn btn-success">
+    <form action="{% url 'add-todo' %}" method="post">{% csrf_token%}
+        <input type="text" name="content">
+        <input type="submit" value="Add" class="btn btn-success">
 </div>
 </form>
-<!--scripts-->	
-<link rel="stylesheet" href="{% static 'js/bootstrap.min.js' %}">
-<link rel="stylesheet" href="{% static 'js/jquery-2.1.4.min.js' %}">
-<link rel="stylesheet" href="{% static 'js/app.js' %}">
-</div>
-</body>
-</html>
+{% endblock content %}
