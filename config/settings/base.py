@@ -5,9 +5,9 @@ from pathlib import Path
 import sys
 
 ROOT_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
-main_dir=str(ROOT_DIR)+'/main/'
-sys.path.append(main_dir)
-import apps
+#main_dir=str(ROOT_DIR)+'/main/'
+#sys.path.append(main_dir)
+#import apps
 
 
 import environ
@@ -69,7 +69,6 @@ DJANGO_APPS = [
     # "django.contrib.humanize", # Handy template tags
     "django.contrib.admin",
     "django.forms",
-    "apps.MainConfig",
 ]
 THIRD_PARTY_APPS = [
     "crispy_forms",
@@ -83,7 +82,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "todo.users.apps.UsersConfig",
-    "main.apps.MainConfig",
+    "todo.main.apps.MainConfig",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
