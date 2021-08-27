@@ -36,3 +36,4 @@ django-coverage-plugin==1.8.0  # https://github.com/nedbat/django_coverage_plugi
 pytest-django==4.1.0  # https://github.com/pytest-dev/pytest-django
 django-admin-honeypot==1.1.0 #https://github.com/dmpayton/django-admin-honeypot/
 django-jazzmin
+pygments>=2.7.4 # not directly required, pinned by Snyk to avoid a vulnerability
